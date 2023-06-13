@@ -1,0 +1,29 @@
+package Assignment10;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class SubSetPrinter 
+{
+	public static void printSubsets(String set) 
+	{
+        List<String> subsets = new ArrayList<>();
+        generateSubsets(set, 0, "", subsets);
+        System.out.println(subsets);
+    }
+    private static void generateSubsets(String set, int index, String currentSubset, List<String> subsets) 
+    {
+        if (index == set.length()) 
+        {
+            subsets.add(currentSubset);
+            return;
+        }
+        generateSubsets(set, index + 1, currentSubset + set.charAt(index), subsets);
+        generateSubsets(set, index + 1, currentSubset, subsets);
+    }
+    public static void main(String[] args) 
+    {
+        String set1 = "abc";
+        printSubsets(set1);
+    }
+}
